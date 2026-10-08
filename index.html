@@ -1,4 +1,10 @@
-<!-- Generador de Cartas de Recomendación -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generador de Cartas de Recomendación</title>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 <style>
@@ -100,6 +106,8 @@ grid-template-columns:1fr;
 }
 }
 </style>
+</head>
+<body>
 
 <div class="container">
 
@@ -146,28 +154,75 @@ grid-template-columns:1fr;
 </div>
 
 <script>
+
 function generarCarta(){
+
 const nombre=document.getElementById("nombre").value;
 const puesto=document.getElementById("puesto").value;
 const empresa=document.getElementById("empresa").value;
 const motivo=document.getElementById("motivo").value;
+
 const fecha=new Date().toLocaleDateString("es-CR");
 
 document.getElementById("carta").innerHTML=`
+
 <div class="encabezado">
 <h2>CARTA DE RECOMENDACIÓN</h2>
 </div>
-<div class="fecha">${fecha}</div>
-<p>A quien corresponda:</p><br>
-<p>Por medio de la presente hago constar que
-<strong>${nombre}</strong> ha demostrado ser una persona responsable,
-comprometida y profesional durante el tiempo que ha desempeñado funciones como
-<strong>${puesto}</strong> en ${empresa}.</p><br>
-<p>Se recomienda ampliamente por las siguientes razones:</p>
-<p>${motivo}</p><br>
-<p>Considero que posee las habilidades, conocimientos y valores necesarios para
-desempeñarse exitosamente en cualquier cargo que le sea asignado.</p>
-<div class="firma"><br><br><br>_________<p>Firma Responsable</p></div>
+
+<div class="fecha">
+${fecha}
+</div>
+
+<p>A quien corresponda:</p>
+
+<br>
+
+<p>
+Por medio de la presente hago constar que
+<strong>${nombre}</strong>
+ha demostrado ser una persona responsable,
+comprometida y profesional durante el tiempo
+que ha desempeñado funciones como
+<strong>${puesto}</strong>
+en ${empresa}.
+</p>
+
+<br>
+
+<p>
+Se recomienda ampliamente por las siguientes
+razones:
+</p>
+
+<p>
+${motivo}
+</p>
+
+<br>
+
+<p>
+Considero que posee las habilidades,
+conocimientos y valores necesarios para
+desempeñarse exitosamente en cualquier
+cargo que le sea asignado.
+</p>
+
+<div class="firma">
+
+<br><br><br>
+
+_________
+
+<p>Firma Responsable</p>
+
+</div>
+
 `;
+
 }
+
 </script>
+
+</body>
+</html>
