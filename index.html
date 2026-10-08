@@ -1,0 +1,173 @@
+<!-- Generador de Cartas de Recomendación -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#0d47a1,#1565c0);
+min-height:100vh;
+padding:20px;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+display:grid;
+grid-template-columns:350px 1fr;
+gap:20px;
+}
+
+.panel{
+background:#fff;
+padding:25px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+h1{
+color:#1565c0;
+margin-bottom:20px;
+}
+
+label{
+display:block;
+margin-top:15px;
+font-weight:bold;
+}
+
+input, textarea{
+width:100%;
+padding:12px;
+margin-top:6px;
+border:1px solid #ddd;
+border-radius:10px;
+}
+
+button{
+width:100%;
+padding:14px;
+margin-top:20px;
+border:none;
+border-radius:12px;
+background:#1565c0;
+color:#fff;
+font-size:16px;
+cursor:pointer;
+font-weight:bold;
+}
+
+button:hover{
+background:#0d47a1;
+}
+
+.carta{
+background:white;
+padding:40px;
+border-radius:15px;
+min-height:700px;
+box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+.encabezado{
+text-align:center;
+border-bottom:3px solid #1565c0;
+padding-bottom:15px;
+margin-bottom:20px;
+}
+
+.encabezado h2{
+color:#1565c0;
+}
+
+.fecha{
+text-align:right;
+margin-bottom:30px;
+}
+
+.firma{
+margin-top:50px;
+}
+
+@media(max-width:900px){
+.container{
+grid-template-columns:1fr;
+}
+}
+</style>
+
+<div class="container">
+
+<div class="panel">
+
+<h1>
+<i class="fa-solid fa-file-signature"></i>
+ Carta de Recomendación
+</h1>
+
+<label>Nombre completo</label>
+<input type="text" id="nombre">
+
+<label>Puesto o profesión</label>
+<input type="text" id="puesto">
+
+<label>Empresa</label>
+<input type="text" id="empresa">
+
+<label>Motivo de recomendación</label>
+<textarea id="motivo" rows="5"></textarea>
+
+<button onclick="generarCarta()">
+<i class="fa-solid fa-wand-magic-sparkles"></i>
+ Generar Carta
+</button>
+
+</div>
+
+<div class="panel">
+
+<div class="carta" id="carta">
+
+<div class="encabezado">
+<h2>CARTA DE RECOMENDACIÓN</h2>
+</div>
+
+<p>Complete los datos y presione "Generar Carta".</p>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+function generarCarta(){
+const nombre=document.getElementById("nombre").value;
+const puesto=document.getElementById("puesto").value;
+const empresa=document.getElementById("empresa").value;
+const motivo=document.getElementById("motivo").value;
+const fecha=new Date().toLocaleDateString("es-CR");
+
+document.getElementById("carta").innerHTML=`
+<div class="encabezado">
+<h2>CARTA DE RECOMENDACIÓN</h2>
+</div>
+<div class="fecha">${fecha}</div>
+<p>A quien corresponda:</p><br>
+<p>Por medio de la presente hago constar que
+<strong>${nombre}</strong> ha demostrado ser una persona responsable,
+comprometida y profesional durante el tiempo que ha desempeñado funciones como
+<strong>${puesto}</strong> en ${empresa}.</p><br>
+<p>Se recomienda ampliamente por las siguientes razones:</p>
+<p>${motivo}</p><br>
+<p>Considero que posee las habilidades, conocimientos y valores necesarios para
+desempeñarse exitosamente en cualquier cargo que le sea asignado.</p>
+<div class="firma"><br><br><br>_________<p>Firma Responsable</p></div>
+`;
+}
+</script>
